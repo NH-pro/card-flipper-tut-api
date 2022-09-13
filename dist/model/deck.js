@@ -7,7 +7,8 @@ exports.Deck = void 0;
 var lodash_1 = __importDefault(require("lodash"));
 var card_1 = require("./card");
 var Deck = /** @class */ (function () {
-    function Deck() {
+    function Deck(isDiscard) {
+        if (isDiscard === void 0) { isDiscard = false; }
         var _this = this;
         this.newDeck = function () {
             lodash_1.default.forIn(card_1.Suit, function (suit, _key) {
@@ -46,7 +47,13 @@ var Deck = /** @class */ (function () {
             _this.cards.unshift(card);
             return _this.cards[0];
         };
+        this.showTopDiscardPile = function () {
+            if (_this.isDiscard) {
+                return _this.cards[0];
+            }
+        };
         this.cards = [];
+        this.isDiscard = isDiscard;
     }
     ;
     return Deck;

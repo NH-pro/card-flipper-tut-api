@@ -7,7 +7,7 @@ var flipped;
 var shuffleDeck = function () {
     deck = new deck_1.Deck();
     deck.shuffleDeck();
-    flipped = new deck_1.Deck();
+    flipped = new deck_1.Deck(true);
 };
 exports.shuffleDeck = shuffleDeck;
 var drawCard = function () {
@@ -36,7 +36,7 @@ var unflipCard = function () {
     deck.putOnTop(cardToUnflip);
     return {
         cardsRemaining: deck.cardsRemainging(),
-        card: cardToUnflip,
+        card: flipped.showTopDiscardPile()
     };
 };
 exports.unflipCard = unflipCard;
